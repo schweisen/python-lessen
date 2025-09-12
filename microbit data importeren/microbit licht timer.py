@@ -70,7 +70,7 @@ while True:
     # Button B om de totale tijd te tonen.
     if button_b.was_pressed():
         # bereken en toon de totale tijd in minuten.
-        minutes_total = total_light_on_duration_ms / 60000
+        minutes_total = total_light_on_duration_ms / 1000
         if is_light_on:
             # Pas live aan als het licht aan is wanneer je op de B button klikt.
             minutes_total += (current_time_ms - current_event_start_time_ms) / 60000
@@ -87,4 +87,5 @@ while True:
         display.show(OFF_IMAGE)
         
     sleep(500) # korte slaapmodus om verder te kunnen meten maar niet te kort om geen honderden metingen te krijgen.
+
   
