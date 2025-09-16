@@ -1,5 +1,5 @@
 import csv
-#vraag 1
+
 with open('meeste gestreamde liedjes.csv', encoding='utf-8') as file:
     reader = csv.reader(file)
     # We slaan de header (de eerste rij) over
@@ -9,6 +9,7 @@ with open('meeste gestreamde liedjes.csv', encoding='utf-8') as file:
     for i in range(5):
         row = next(reader)
         print(row)
+#vraag 1
     dualipa_count = 0
     for row in reader:
             # We gaan ervan uit dat de artiest in de TWEEDE kolom staat (index 1).
