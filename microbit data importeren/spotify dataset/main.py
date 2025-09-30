@@ -9,12 +9,13 @@ with open('meeste gestreamde liedjes.csv', encoding='utf-8') as file:
     ARTISTS_INDEX = header.index('artist(s)_name')
     DANCEABILITY_INDEX = header.index('danceability_%')
     POPULARITY_INDEX = header.index('streams')
-
-    # We lezen en printen de eerste 5 rijen om te testen
+    IN_PLAYLISTS_INDEX = header.index('in_spotify_playlists')
+    
+# We lezen en printen de eerste 5 rijen om te testen
     for i in range(5):
         row = next(reader)
         print(row)
-#vraag 1
+# vraag 1
     dualipa_count = 0
     for row in reader:
             # We gaan ervan uit dat de artiest in de TWEEDE kolom staat (index 1).
@@ -24,12 +25,10 @@ with open('meeste gestreamde liedjes.csv', encoding='utf-8') as file:
                 dualipa_count += 1
     print("aantal keer dat Dua Lipa voorkomt in de hitlijst: "+ str(dualipa_count))
 
-#vraag 2
+# vraag 2
     for row in reader:
         danceability_score = int(row[DANCEABILITY_INDEX])
         if danceability_score > 90:
             track_name = row[TRACK_NAME_INDEX]
             artists = row[ARTISTS_INDEX]
             print(track_name + " door " + artists)
-    
-                
