@@ -10,20 +10,23 @@ with open('meeste gestreamde liedjes.csv', encoding='utf-8') as file:
     DANCEABILITY_INDEX = header.index('danceability_%')
     POPULARITY_INDEX = header.index('streams')
     IN_PLAYLISTS_INDEX = header.index('in_spotify_playlists')
+    RELEASED_YEAR_INDEX = header.index('released_year')
+    RELEASED_MONTH_INDEX = header.index('released_month')
+    RELEASED_DAY_INDEX = header.index('released_day')
     
 # We lezen en printen de eerste 5 rijen om te testen
     for i in range(5):
         row = next(reader)
         print(row)
 # vraag 1
-    dualipa_count = 0
+    bad_bunny_count = 0
     for row in reader:
             # We gaan ervan uit dat de artiest in de TWEEDE kolom staat (index 1).
             # Controleer of de naam 'Dua Lipa' in die kolom voorkomt.
-            if 'Dua Lipa' in row[1]:
+            if 'Bad Bunny' in row[1]:
                 # Stap 4: Als dat zo is, tel er eentje bij op.
-                dualipa_count += 1
-    print("aantal keer dat Dua Lipa voorkomt in de hitlijst: "+ str(dualipa_count))
+                bad_bunny_count += 1
+    print("aantal keer dat Bad Bunny voorkomt in de hitlijst: "+ str(bad_bunny_count))
 
 # vraag 2
     for row in reader:
@@ -32,3 +35,10 @@ with open('meeste gestreamde liedjes.csv', encoding='utf-8') as file:
             track_name = row[TRACK_NAME_INDEX]
             artists = row[ARTISTS_INDEX]
             print(track_name + " door " + artists)
+
+# vraag 3
+    startjaar = 2026
+    for row in reader:
+        jaar_van_uitgave = int(row[RELEASED_YEAR_INDEX])
+        if jaar_van_uitgave < startjaar:
+            
