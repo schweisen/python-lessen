@@ -200,3 +200,4 @@ week 3 uitgaven
 ```
 
 Nu is het aan jullie: maak de bookwidget: error lezen in het leerpad
+
