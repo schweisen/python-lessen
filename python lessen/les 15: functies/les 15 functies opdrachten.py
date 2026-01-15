@@ -5,8 +5,19 @@
 
 import random
 
+def krijg_soort():
+    """Geeft een random soort kaart"""
+    soorten = ["Schuppen","Harten","klaveren","koeken"]
+    return random.choice(soorten)
+
+def krijg_getal():
+    """geef een random getal"""
+    getallen = ["aas","twee","drie","vier","vijf","zes","zeven,","acht","negen","tien","boer","dame","koning"]
+    return random.choice(getallen)
+
 def trek_kaart():
     """Geeft een random kaart uit het pak als een string."""
+    return krijg_soort() + " " + krijg_getal()
 
 def trek_hand(aantal_kaarten):
     """Geeft een speler een aantal random kaarten, nodig om het spel te spelen."""
