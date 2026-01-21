@@ -12,7 +12,7 @@ def krijg_soort():
 
 def krijg_getal():
     """geef een random getal"""
-    getallen = ["aas","twee","drie","vier","vijf","zes","zeven,","acht","negen","tien","boer","dame","koning"]
+    getallen = ["aas","2","3","4","5","6","7","8","9","10","boer","dame","koning"]
     return random.choice(getallen)
 
 def trek_kaart():
