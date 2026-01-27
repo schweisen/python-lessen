@@ -1,27 +1,13 @@
-import random
+def krijg_score(bananen, appels, heeft_vergiftige_appel):
+    """Geeft de totale score van een speler, gebaseerd op het aantal kaarten van elke soort."""
+    bananen_score = krijg_banana_score(bananen)
+    appel_score = krijg_appel_score(appels, heeft_vergiftige_appel)
 
-def trek_kaart():
-    """Ik trek random een appel of een banaan-kaart."""
-    soorten = ["appel","banaan","giftige appel"]
-    return random.choice(soorten)
+    return bananen_score + appel_score
 
-def trek_hand(aantal_kaarten):
-    """Geeft de speler het aantal kaarten dat hij vraagt."""
-    hand = ""
-    for kaart in range(0, aantal_kaarten):
-        hand += trek_kaart() + " "
-    return hand
-
-def krijg_appel_score(aantal_appels, heeft_giftige_appel):
-    """Berekent de score van het aantal appelkaarten."""
-    if heeft_giftige_appel is True:
-        return aantal_appels * -2
-    elif heeft_giftige_appel is False:
-        return aantal_appels * 2
-
-def krijg_banaan_score(aantal_bananen):
-    """Berekent de score van het aantal bananenkaarten."""
-    # bananen zijn meer waard als ze met meer zijn.
+def krijg_banana_score(aantal_bananen):
+    """Geeft de score van een speler op basis van het aantal bananen kaarten."""
+    # Bananen zijn meer waard in trossen.
     if aantal_bananen == 1:
         return 1
     elif aantal_bananen == 2:
@@ -31,21 +17,12 @@ def krijg_banaan_score(aantal_bananen):
     else:
         return 0
 
-def bereken_score(aantal_appels, aantal_bananen, heeft_giftige_appel):
-    """Berekent de totale score van de speler."""
-    appel_score = krijg_appel_score(aantal_appels, heeft_giftige_appel)
-    banaan_score = krijg_banaan_score(aantal_bananen)
-    return appel_score + banaan_score
+def krijg_appel_score(aantal_appels, heeft_vergiftige_appel):
+    """Geeft de score van een speler op basis van het aantal appel kaarten."""
+    return aantal_appels * 2
 
-aantal_kaarten = int(input("Hoeveel kaarten wil je trekken? "))
-aantal_appels = int(input("Hoeveel appelkaarten heb je getrokken? "))
-aantal_bananen = int(input("Hoeveel bananenkaarten heb je getrokken? "))
-heeft_giftige_appel = input("Heb je een giftige appelkaart getrokken? (ja/nee) ")
-if heeft_giftige_appel.lower() == "ja":
-    heeft_giftige_appel = True
-else:
-    heeft_giftige_appel = False
-if aantal_kaarten != aantal_appels + aantal_bananen + (1 if heeft_giftige_appel else 0):
-    print("Fout: het totaal aantal kaarten komt niet overeen met de som van appel-, banaan- en giftige appelkaarten.")
-else:
-    print("Je score is: " + str(bereken_score(aantal_appels, aantal_bananen, heeft_giftige_appel)))
+
+# Berekent de totale score voor elke speler.
+speler1_score = krijg_score(3, 2, True)
+speler2_score = krijg_score(1, 5, False)
+print("Scores: speler 1=" + str(speler1_score) + ", speler 2=" + str(speler2_score))
